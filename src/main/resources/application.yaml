@@ -1,0 +1,46 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: study
+  ##  spring redis config
+  redis:
+    host: 192.168.28.200
+    port: 6379
+  ## database config
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://192.168.28.200:5432/postgres
+    username: postgres
+    password: admin
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        temp:
+          use_jdbc_metadata_defaults: false
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+  ##### kafka config
+  kafka:
+    bootstrap-servers:  192.168.28.200:9092
+    consumer:
+      group-id: group_homework
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      retries: 3
+  #### elasticsearch config  #######
+  data:
+    elasticsearch:
+      cluster-name:  docker-cluster
+      cluster-nodes: 192.168.28.200:9300
+  elasticsearch:
+    rest:
+      uris: 192.168.28.200:9200
+
