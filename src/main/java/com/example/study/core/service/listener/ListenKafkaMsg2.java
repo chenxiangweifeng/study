@@ -11,6 +11,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
+ * @author chenxiangweifeng
  * kafka 两个服务监听，ListenKafkaMsg1，ListenKafkaMsg2，两个服务来共同监听一个消息，要使用不同的分组确保每个服务都可以介绍到
  */
 @Component
