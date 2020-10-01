@@ -20,12 +20,6 @@ public class Person {
     private String phoneNum;
     @Column(name = "age")
     private Integer age;
-    @Column(name = "unit_id")
-    private Integer unitId;
-    @Column(name = "bld_id")
-    private Integer bldId;
-    @Column(name = "flor_id")
-    private Integer florId;
     @Column(name = "create_time")
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(locale = "zh",timezone = "GMT+8",pattern = "yyyy-MM-dd")

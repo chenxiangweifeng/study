@@ -26,8 +26,14 @@ public class TestKafkaController {
     public String testListenerMessage() {
         return null;
     }
+    @ApiOperation(value = "向kafka中发送简单字符串信息")
+    @RequestMapping(value = "/testSendSimpleMessage", method = RequestMethod.POST)
+    public String testSendSimpleMessage(@RequestParam("msg") String msg) {
+        KafkaTemplate.send(KafkaTopicEnum.SIMPLE_MSG.code,msg);
+        return "发送消息成功";
+    }
 
-    @ApiOperation(value = "向kafka中发送信息")
+    @ApiOperation(value = "向kafka中发送一个对象消息")
     @RequestMapping(value = "/testSendMessage", method = RequestMethod.POST)
     public String testSendMessage(@RequestParam("personType") Integer personType) {
         Person p = new Person();
@@ -36,7 +42,7 @@ public class TestKafkaController {
         p.setPhoneNum("18018576105");
         // 向特定的topic发送消息
         KafkaTemplate.send(KafkaTopicEnum.TEST_PERSON_MESSAGE.code,p);
-        return "恭喜发财";
+        return "发送一个对象消息成功";
     }
 
     @ApiOperation(value = "向具有kafka-2个partition的topic发送信息")

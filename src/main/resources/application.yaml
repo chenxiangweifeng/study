@@ -26,7 +26,7 @@ spring:
   kafka:
     bootstrap-servers:  192.168.28.200:9092
     consumer:
-      group-id: group_homework
+      group-id: group_study
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer

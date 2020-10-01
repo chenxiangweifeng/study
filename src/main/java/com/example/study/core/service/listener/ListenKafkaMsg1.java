@@ -21,11 +21,13 @@ import java.net.UnknownHostException;
 @Component
 public class ListenKafkaMsg1 {
 
-    /**
-     * 靠这个容器工厂ackContainerFactory，来批量的生产消费者
-     * @param consumerRecord
-     * @param acknowledgment
-     */
+    @KafkaListener(topics = "simple-msg",containerFactory = "ackContainerFactory")
+    public void receiveSimpleKafkaMsg(ConsumerRecord<?,?> consumerRecord, Acknowledgment acknowledgment){
+        System.out.println("监听服务接收到的简单字符串消息是======"+consumerRecord.value().toString());
+        System.out.println("=================== end =================");
+        acknowledgment.acknowledge();
+    }
+
     @KafkaListener(topics = "test-person-message",groupId ="serverGroup1",containerFactory = "ackContainerFactory")
     public void receiveKafkaMsg1(ConsumerRecord<?,?> consumerRecord, Acknowledgment acknowledgment){
         System.out.println("监听服务接收到的消息是：111111111111111111111111");
