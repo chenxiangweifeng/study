@@ -1,5 +1,9 @@
 package com.example.study.common.enums;
 
+/**
+ * @author 沉香微风
+ * kafka topic的统一规范定义
+ */
 public enum KafkaTopicEnum {
     // 人员消息测试
     SIMPLE_MSG("simple-msg","发送简单的字符串消息"),

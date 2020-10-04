@@ -2,18 +2,21 @@ package com.example.study.core.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Data
 @Entity
+@GenericGenerator(name = "jpa-uuid",strategy = "uuid")
 @Table(name = "tb_person",indexes = {@Index(name = "idx_person_id",columnList = "id")})
 public class Person {
 
     @Id
+    @GeneratedValue(generator = "jpa-uuid")
     @Column(name = "id")
-    private Long id;
+    private String id;
     @Column(name = "user_name")
     private String userName;
     @Column(name = "phone_num",length = 32)
@@ -39,7 +42,7 @@ public class Person {
         this.age = age;
         this.addr = addr;
     }
-    public Person(Long id, String userName, Integer age, String addr) {
+    public Person(String id, String userName, Integer age, String addr) {
         this.id = id;
         this.userName = userName;
         this.age = age;
