@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript">
+        function creatCode() {
+            var datas = ['a','b','c','d','4','7','0'];
+            for(var i =0 ; i< 4; i++){
+                var index = Math.floor(Math.random()*datas.length);
+                code+= datas[i];
+            }
+            var spanNode = document.getElementById("code");
+            spanNode.innerHTML = code;
+
+        }
+
+        <meta charset="UTF-8"/>
+    <title>Title</title>
+
+</head>
+<body>
+        <span><a href="#" onclick="creatCode()">看不清，换一个 </a></span>
+
+</body>
+</html>

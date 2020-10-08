@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ajax-form</title>
+    <script type="text/javascript" src="jquery-1.8.2.js"></script>
+</head>
+
+<body>
+    <form>
+       用户名 <input type="text" name="userName"><br>
+        年龄 <input type="text" name="age"><br>
+        薪水 <input type="text" name="salary"><br>
+    </form>
+    <input id="inutID" type="button" value="保存当前内容1"><br>
+<hr>
+
+    <form>
+        用户名 <input type="text" name="userName2"><br>
+        年龄 <input type="text" name="age2"><br>
+        薪水 <input type="text" name="salary2"><br>
+    </form>
+    <input type="button" value="保存当前内容2"><br>
+
+<script type="text/javascript">
+    $("#inputID").click(
+        function () {
+            var url = "${pageContext.request.contextPath }/TimeServlet";
+            //传值必须随时json格式
+        var p  =    $('form').serialize();
+            var person = {
+                userName :$("input:eq(0)").val(),
+                age :$("input:eq(1)").val(),
+                salary :$("input:eq(2)").val()
+            };
+            $("#time").load(url,person)
+        }
+    )
+</script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>表单标签</title>
+<!--引入外部css文件，一定也要会用 -->
+  <link type="text/css" href="test.css" rel = stylesheet>
+
+<style type="text/css">
+    /*
+    css就是很简单，只要找到标签，就可以对相应的标签做相应的设定。
+    开始的位置写上 <style type="text/css">《/style》
+         */
+    select{
+        color: #CC9999;
+        font-size: large;
+        background-color: #66FFCC;
+    }
+.submit{
+    color: #9933CC;
+    font-size: larger;
+    background-color: #FFFFFF;
+}
+
+
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<!--
+表单标签
+
+-->
+	<form action="http:www.baidu.com">
+    用户名：<input name="userName" type="text"/> <br/>
+    密码：<input type="password"/><br/>
+    性别：男<input name="sex" checked= "true"type="radio"/>  女<input name="sex" type="radio"/> <br/>
+    
+   来自的城市： <select>
+    	<option> 北京   </option>
+        <option> 上海   </option>
+        <option> 广州   </option>
+    </select><br/>
+    
+   兴趣爱好： java<input type="checkbox"/>  安卓<input type="checkbox"/> javascript<input type="checkbox"/><br/>
+    
+   大头照：<input type="file"/>    <br/>
+   
+   个人简介：<textarea rows="10",cols="30">
+   
+   			</textarea>  <br/>
+            
+            <input class="submit" type="submit" value="注册"/>
+            <input class="reset" type="reset" value="重置"/>
+   
+   
+   
+   
+    </form>
+  
+
+
+
+</body>
+</html>

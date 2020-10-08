@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SpringBoot模版渲染</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <!--仅仅需要以下两个文件即可使用layui-->
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" href="../static/layui/css/layui.css">
+    <script th:src="@{/layui/layui.all.js}" src="../static/layui/layui.all.js"></script>
+</head>
+<body>
+<br>
+<p th:text="'用户ID：' + ${uid}"/>
+<p th:text="'用户名称：' + ${name}"/>
+<hr>
+<h3>循环遍历list</h3>
+<tr th:each="lag : ${languages}">
+    <td th:text="${lag}">语言</td>
+</tr>
+
+<hr>
+<h3>解析一个复合对象--一个用户的实体对象</h3>
+<!--这里加一个问号，如果非空才显示，避免了空指针的出现-->
+<div>
+    <p th:text="'用户编号：' + ${p?.id}"/>
+    <p th:text="'用户姓名：' + ${p?.userName}"/>
+    <p th:text="'用户年龄：' + ${p?.age}"/>
+    <p th:text="'用户地址：' + ${p?.addr}"/>
+    <p th:text="'出生日期：' + ${p?.createTime}"/>
+    <p th:text="'出生日期：' + ${#dates.format(p?.createTime,'yyyy-MM-dd')}"/>
+</div>
+
+<hr>
+<h3>循环遍历list，每个list里面是一个复合对象</h3>
+<tr th:each="per:${ps}">
+    <div>
+        <p th:text="'用户编号：' + ${per.id}"/>
+        <p th:text="'用户姓名：' + ${per.userName}"/>
+        <p th:text="'用户年龄：' + ${per.age}"/>
+        <p th:text="'用户地址：' + ${per.addr}"/>
+        <p th:text="'出生日期：' + ${per.createTime}"/>
+        <p th:text="'出生日期：' + ${#dates.format(per.createTime,'yyyy-MM-dd')}"/>
+    </div>
+</tr>
+
+<hr>
+<h2>静态表格</h2>
+<table lay-filter="demo">
+    <thead>
+    <tr>
+        <th lay-data="{field:'id', width:100}">编号</th>
+        <th lay-data="{field:'userName', width:100, sort:true}">用户名</th>
+        <th lay-data="{field:'age', width:100, sort:true}">年龄</th>s
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="per:${ps}">
+        <td><p th:text="${per.id}"/></td>
+        <td><p th:text="${per.userName}"/></td>
+        <td><p th:text="${per.age}"/></td>
+    </tr>
+</table>
+<script>
+    var table = layui.table;
+    //转换静态表格
+    table.init('demo', {
+        height: 315 //设置高度
+        ,limit: 10 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致
+        //支持所有基础参数
+        ,page: true
+    });
+</script>
+
+<hr>
+<h2>方法渲染-这个还是挺好用的嘛</h2>
+<table id="demo1" lay-filter="test"></table>
+<script th:inline="none">
+    layui.use('table', function(){
+        var table = layui.table;
+        //第一个实例
+        table.render({
+            elem: '#demo1'
+            ,height: 312
+            ,url: 'http://localhost:8081/th/ps' //数据接口
+            ,page: true //开启分页
+            ,cols:
+                [
+                    [ //表头
+                {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
+                ,{field: 'userName', title: '用户名', width:80}
+                ,{field: 'age', title: '性别', width:80, sort: true}
+                ,{field: 'addr', title: '城市', width:80}
+            ]
+                ]
+        });
+    });
+</script>
+
+
+</body>
+</html>

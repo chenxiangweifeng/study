@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>json测试</title>
+  <!--借此机会把json格式好好地搞清楚，json这个知识点再次学习加深一下。 -->
+
+</head>
+
+<body>
+      <script type="text/javascript">
+     var sendjson = {
+         "url" : "消息原文链接，供整体跳转。界面无需出现跳转按钮",
+         "covertype" : "可选，1：imageid;2:url",
+         "cover" : "可选，imageid或url。如留空表示无图片",
+         "title" : {
+             "content" : "消息标题", //正文
+             "color" : "#ffc17d", //可选。颜色
+             "font" : "m"        //可选。字体，s-小，m-中，l-大
+         },
+         "body" : {
+             "content" : "消息标题", //正文
+             "color" : "#ffc17d", //可选。颜色
+             "font" : "m"        //可选。字体，s-小，m-中，l-大
+         },
+         "status" :
+             {
+                 //1--该区域放action，对应btns字段，此时text无效
+                 //2--放文字，对应text字段，此时btns无效
+                 "type" : "1",
+                 "text" : {
+                     "content" : "消息标题", //正文
+                     "color" : "#ffc17d", //可选。颜色
+                     "font" : "m"        //可选。字体，s-小，m-中，l-大
+                 },
+                 "btns": [
+                     {
+                         "name": "一个按钮",
+                         //click-点击事件，此时url为key；
+                         //view-跳转，跳转至url；
+                         //open-本地调用，此时url为本地调用串
+                         "type": "view",
+                         "url": "https://www.taobao.com", // 参见type取值说明
+                         "color": "#ffc17d", //可选。颜色
+                         "font" : "m"        //可选。字体，s-小，m-中，l-大
+                     },
+                     {
+                         "name": "两个按钮",
+                         "type": "view",
+                         "url": "https://www.taobao.com",
+                         "color": "#ffc17d", //可选。颜色
+                         "font" : "m"        //可选。字体，s-小，m-中，l-大
+                     }
+                 ]
+             },
+         "styles" :  {
+             "statusBtnsVertical": "1", // 0-横排 1-竖排
+             "bgColor" : "消息气泡底色 如#ffc17d]"
+         }
+     }
+      </script>
+
+
+
+
+
+</body>
+</html>

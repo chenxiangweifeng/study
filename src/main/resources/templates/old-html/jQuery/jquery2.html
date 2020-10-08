@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="text/javascript" src="jquery-1.8.2.js"></script>     <!-- 引入外部jquery库-->
+    <title>jQuery九类选择器</title>
+    <style type="text/css"></style>
+</head>
+<body>
+
+<script type="text/javascript">
+    /*var nameArray = ["haha","hehe","xixi","dudu"];
+          var $nameArray =  $(nameArray);
+          $nameArray.each(function () {
+              alert(this);
+          })*/
+    var objArray = [
+        {"name": "alice", "salary": 6000},
+        {"name": "bob", "salary": 7000},
+        {"name": "smith", "salary": 8000}
+    ];
+    var $objArray = $(objArray);//将json对象转化为jQuery对象。
+    $objArray.each(function () {
+        document.write(this.name + "  :" + this.salary + "<br>");
+    })
+</script>
+
+
+</body>
+</html>

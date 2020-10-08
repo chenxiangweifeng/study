@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>城市的联动框</title>
+<script type="text/javascript">
+    function showCity() {
+        var citys = [[],["1","2","3"],["a","b","c"],["nanning","beihai"]];//维护了一个二维数组
+        var prinvinceNode =  document.getElementById("province");
+        var selectIndex = provinceNode.selectedIndex;
+        //var  cityDatas  =  provinceNode.selectedIndex;
+         var cityNode = document.getElementById("city");
+
+        for(var index = 0; index < cityDatas.length; index++){
+            var option  = document.createElement("option");
+            option.innerHTML = cityDatas[index];
+            cityNode.appendChild(option);
+        }
+
+    }
+    
+    
+    
+    
+</script>
+
+
+
+
+
+</head>
+<body>
+<table>
+        省份<select id="province" onchange="showCity()">
+                    <option>省份</option>
+                    <option>广东</option>
+                    <option>湖南</option>
+                    <option>广西</option>
+        </select>
+
+    城市<select id="city">
+    <option>城市</option>
+</select>
+
+
+
+</table>
+
+
+
+
+
+</body>
+</html>

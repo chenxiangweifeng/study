@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript">
+/*
+自定义对象的方式一：有函数就可以创建对象。
+function Person(){}
+
+var p = new Person();
+p.id = 110;
+p.name = "tom";
+p.say = function(){
+	alert("this name is :"+this.name);}
+	document.write(""+p.id+p.name);
+	p.say();
+
+方式二：使用带参数的函数创建对象：	
+function Person(id,name){
+	this.id = id ;
+	this.name = name;
+	this.say = function(){
+		alert(this.name+"hhehh");}
+
+	}
+	document.write();
+var p = new Person("110","bob");
+p.say();
+
+
+
+最大值的方法和找出数组中的一个值的索引值。
+*/
+function ArrayTool(){
+	
+	this.getMAX = function(arr){//找最大值的方法
+		var max = arr[0];
+	for(var i = 0; i<arr.length;i++){
+		if(arr[i]>max){
+			max	= arr[i];
+			}
+		}
+		return max;			
+	}
+
+	this.getIndex = function(arr,value){//找索引的方法
+		for (var i = 0; i < arr.length; i++) {//进行数组的遍历
+			if (arr[i] == value) {
+				return i;
+				break;
+			}
+		}
+		return -1;
+	}
+	
+	}
+
+var data = [1,-7,3,2,100,80,50,900,899,8];
+var o1 = new ArrayTool();
+var max = o1.getMAX(data);
+var index = o1.getIndex(data,6);
+document.write(max+"<br/>");
+document.write("the index is :"+index+"<br/>");
+
+	
+</script>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>自定义对象</title>
+</head>
+
+<body>
+</body>
+</html>

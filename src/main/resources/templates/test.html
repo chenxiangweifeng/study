@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+1、layui 和 jquery有冲突，需要使用layui内置到的jquery比较好
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" href="../static/layui/css/layui.css">
+    <link rel="stylesheet" th:href="@{lib/css/main.css}" href="../static/lib/css/main.css">
+    <link rel="stylesheet" th:href="@{/lib/css/public.css}" href="../static/lib/css/public.css">
+    <!--<script th:src="@{/layui/layui.all.js}" src="../static/layui/layui.all.js"></script>-->
+    <script th:src="@{/layui/layui.js}" src="../static/layui/layui.js"></script>
+    <script th:src="@{/lib/js/jquery-3.4.1.min.js}" src="../static/lib/js/jquery-3.4.1.min.js"></script>
+</head>
+
+<td><span class="colorRed">*</span>运抵国家：</td>
+<td>
+    <select name="currency" id="currency" lay-verify="required" lay-search>
+        <option value="">请选择...</option>
+    </select>
+</td>
+
+<script>
+
+
+    var src = '<option value="">请选择...</option>';
+    $.ajax({
+        url: 'http://localhost:8081/th/deploy',
+        type: 'get',
+        dataType: 'json',
+        success: function (data) {
+            // if(data.status==200){
+            $.each(data, function (index, item) {
+                src += '<option value="' + item.id + '">' + item.name + '</option>';
+            });
+            // alert(src);
+            $('#currency').html(src);
+            form.render();
+            // }
+        }
+    });
+    //首先动态存储变量然后通过dom找到select被封装后的位置及元素来设置点击事件
+    var currency = 'dd[lay-value=' + data.currency + ']';
+    $('#currency').siblings("div.layui-form-select").find('dl').find(currency).click();
+
+
+</script>
+
+
+</body>
+</html>

@@ -4,6 +4,7 @@ import com.example.study.common.pool.MyThreadExecutor;
 import com.example.study.core.model.entity.Person;
 import com.example.study.core.repository.jpa.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.*;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
@@ -59,6 +60,18 @@ public void savePerson(int i,CountDownLatch countDownLatch){
         e.printStackTrace();
     }
 }
+    public Page<Person> queryPagePersons(int page,int limit) {
+//        多个字段进行排序
+//        Sort sort = new Sort(Sort.Direction.DESC, "personType").
+//                and(new Sort(Sort.Direction.ASC, "createTime"));
+        Pageable pageable = PageRequest.of(page, limit);
+        Page<Person> pagePerson = personRepository.findAll(pageable);
+        List<Person> personEntities = pagePerson.getContent();
+        // 此处可以将 personEntities 可以再转换为vo
+//        List<PersonVo> personVoList = MapperUtil.mapperObjectList(PersonVo.class, personEntities);
+        // 再新构建一个page页面
+        return new PageImpl<>(personEntities, pageable, pagePerson.getTotalElements());
+    }
 
     /**
      * 测试定时任务1，每30 秒钟打印一次
@@ -76,13 +89,17 @@ public void savePerson(int i,CountDownLatch countDownLatch){
     }
 
 
-    public Person findByPersonById(Integer id) {
+
+
+//    @Cacheable(value = "findByPersonById")
+    public Person findByPersonById(String id) {
+        System.out.println("实际去数据库查询查找！");
         Person p = personRepository.findByPersonById(id);
         return p;
     }
 
     /**
-     * 保存一个人
+     * 保存一个用户
      * @param person
      */
     public void save(Person person) {
@@ -90,7 +107,7 @@ public void savePerson(int i,CountDownLatch countDownLatch){
     }
 
     //@Transactional
-    public void updatePersonBySave(Integer id, String name) {
+    public void updatePersonBySave(String id, String name) {
 //   查询出来是非常有必要的，不然很多字段都被置空了。
 //      一定要查询出该条记录的全量，再进行save，否则很多字段就被置空了
         Optional<Person> optional = personRepository.findById(id);

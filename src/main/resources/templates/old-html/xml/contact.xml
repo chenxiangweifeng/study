@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/css" href="03.contact.css"?>
+<contactlist>
+<!--
+标签节点
+节点信息-》Node
+标签节点：-》element
+属性节点-》attribute
+文本节点-》text
+document文档根对象，document对象，通过document对象可以得到其下面的其他
+节点对象，通过节点对象访问xml
+
+  属性节点
+
+ 文本节点
+ -->
+    <contact id = "001">
+        <name>张三</name>
+        <age>20</age>
+        <phone>123456789</phone>
+        <email>1234567@qq.com</email>
+        <qq>1248195695</qq>
+    </contact>
+
+    <contact id="002">
+        <name>mary</name>
+        <age>18</age>
+        <phone>87654321</phone>
+        <email>87654321@qq.com</email>
+        <qq>95566</qq>
+    </contact>
+
+</contactlist>

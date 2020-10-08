@@ -1,0 +1,10 @@
+contact{
+    color: #FFFFFF;
+    font-size: 20px;
+    width: 200px;
+    height: 200px;/*   css注释 */
+    display: block;
+    margin-top: 30px;
+    background-color: #FF99CC;
+
+}

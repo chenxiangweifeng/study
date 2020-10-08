@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通过属性找标签</title>
+<script type="text/javascript">
+
+    function checkAll() {
+        var items = document.getElementsByName("item");
+    var allNode =  document.getElementsByName("all")[0];
+ for(var i = 0;i<items.length;i++){
+        items[i].checked = allNode.checked;
+ }
+
+    }
+    function getSum() {
+    var items =  document.getElementsByName("item");
+    var sum = 0;
+
+    for(var i = 0; i<items.length;i++){
+        if(items[i].checked){
+            sum = sum + parseInt(items[i].value);
+        }
+    }
+       var inputNode =  document.getElementById("money");
+        inputNode.value=sum+"元";
+     //   spanNode.innerHTML = ("&nbsp;&yen"+sum).fontcolor("red");
+document.get
+    }
+
+
+</script>
+
+
+
+
+</head>
+<body>
+<div>商品列表</div>
+    <input type="checkbox" name="item" value="4000" />laptop RMB4000<br/>
+    <input type="checkbox" name="item" value="3000" />laptop RMB3000<br/>
+    <input type="checkbox" name="item" value="2000" />laptop RMB2000<br/>
+    <input type="checkbox" name="item" value="3000" />laptop RMB3000<br/>
+    <input type="checkbox" name="item" value="3000" />laptop RMB3000<br/>
+    <input type="checkbox" name="item" value="1000" />laptop RMB1000<br/>
+<input type="checkbox" name="all" onclick="checkAll()"  /> 全选<br/>
+<input type="button" value="总金额" onclick="getSum()"/>
+<input type="text" id="money" />
+<span id="sumid"></span>
+
+
+
+</body>
+</html>

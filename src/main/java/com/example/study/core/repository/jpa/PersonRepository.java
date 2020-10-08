@@ -18,7 +18,7 @@ import java.util.List;
  *  说白了，JPA做的就是一个映射工作，可以方便我们更加快捷的操作数据库！
  */
 @Repository
-public interface PersonRepository extends JpaRepository<Person,Integer>, JpaSpecificationExecutor<Person> {
+public interface PersonRepository extends JpaRepository<Person,String>, JpaSpecificationExecutor<Person> {
 
     /**
      * @Query 自定义查询
@@ -32,7 +32,7 @@ public interface PersonRepository extends JpaRepository<Person,Integer>, JpaSpec
     void save2(@Param("id") Integer id, @Param("age") Integer age, @Param("userName") String userName);
 
     @Query("select p from Person p where p.id=:id")
-    Person findByPersonById(@Param("id") Integer id);
+    Person findByPersonById(@Param("id") String id);
 
     Person findByUserName(String userName);
 

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>json测试</title>
+  <!--借此机会把json格式好好地搞清楚，json这个知识点再次学习加深一下。 -->
+
+</head>
+
+<body>
+      <div id="divID"></div>
+      <div id="divID2"></div>
+      <div id="xin"></div>
+      <div id="stu"></div>
+
+      <script type="text/javascript">
+        //这就是一个json格式的数组，每个数组都是一个json对象，每个对象中分别有两个（多个）字段
+          var sites = [
+              {"name":"baidu","url":"www.baidu.com"},
+              {"name":'google','url':'www.google.com'},
+              {"name":'qq','url':'www.qq.com'}
+          ];
+          document.getElementById("divID").innerHTML = sites[1].name;
+          document.getElementById("divID2").innerHTML = sites[2].url;
+
+          var person={
+              'name':'xin',
+              'age':'18',
+              'phone':'180',
+              // json的嵌套。
+              'student':{
+                  'number':'1672',
+                  'school':'shu'
+              }
+          };
+          // 删除json对象的属性
+          delete person.phone;
+          for (x in person){
+              document.getElementById('xin').innerHTML += person[x] +',';
+          }
+        //使用【】 来修改json对象的值
+        person.student['school'] = 'shanghai university';
+
+        document.getElementById('stu').innerHTML = person.student.school;
+
+        // 现在per为一个标准的json对象
+        var  per = {"name":"xinqqqqqqq","mydate":"2013-12-24"};
+        // myjson 就被转换成了一个标准的string字符串了。
+        var myJson = JSON.stringify(per);
+
+        document.write(myJson);
+
+
+
+      </script>
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通过标签找节点</title>
+  <script type="text/javascript">
+      function showText() {
+         var inputNode =  document.getElementById("set");
+         inputNode.value = "已经设置好了文本";
+      }
+
+
+      function showImage() {
+      var images =  document.getElementsByTagName("img");
+      for(var i = 0; i<images.length; i++){
+       images[i].src = "1.jpg";
+       images[i].width = "100";
+       images[i].height = "50";
+      }
+      }
+      
+  </script>  
+    
+    
+    
+    
+</head>
+
+
+
+
+<body>
+<!--  根据id属性找元素 -->
+
+
+<input type="text" id="set" value="请设置文本内容"/> <input type="button" onclick="showText()" value="set tex"/>
+<hr/>
+<img src=""/>
+<img src=""/>
+<img src=""/>
+<input type="button" onclick="showImage()" value="set images"/>
+
+
+
+
+</body>
+
+
+
+
+</html>

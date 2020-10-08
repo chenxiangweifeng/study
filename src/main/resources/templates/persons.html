@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SpringBoot模版渲染</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <!--仅仅需要以下两个文件即可使用layui-->
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" href="../static/layui/css/layui.css">
+    <script th:src="@{/layui/layui.all.js}" src="../static/layui/layui.all.js"></script>
+</head>
+<body>
+
+<h2>人员信息表</h2>
+<table id="demo1" lay-filter="test"></table>
+<script th:inline="none">
+    layui.use('table', function(){
+        var table = layui.table;
+        //第一个实例
+        table.render({
+            elem: '#demo1'
+            ,height: 500
+            ,url: 'http://localhost:8081/jpa/queryPagePersons' //数据接口
+            ,page: true //开启分页
+            ,cols:
+                [
+                    [ //表头
+                {type: 'checkbox'}
+                ,{field: 'id', title: 'ID', width:80}
+                ,{field: 'userName', title: '用户名', width:80}
+                ,{field: 'age', title: '性别', width:80, sort: true}
+                ,{field: 'addr', title: '城市', width:200}
+            ]
+                ]
+        });
+    });
+</script>
+
+
+</body>
+</html>

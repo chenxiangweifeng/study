@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<script type="text/javascript">
+document.write("hello java script"+"<br/>");
+document.write("你好"+"<br/>");
+//这是备注，变量的定义,一个var可以定义所有的变量类型
+//var variable变量的意思。
+var a = 1;
+var b = 3.14;
+var c = "t";
+var d = "mm";
+var e = true;//boolean
+
+document.write(a+"<br/>");
+document.write(b+"<br/>");
+document.write(c+"<br/>");
+document.write(d+"<br/>");
+document.write(e+"<br/>");
+
+//从这里可以看出来，javascript的数据类型有number string Boolean 三种数据类型。
+document.write("a的数据类型是："+(typeof a)+"<br/>");
+document.write("b的数据类型是："+(typeof b)+"<br/>");
+document.write("c的数据类型是："+(typeof c)+"<br/>");
+document.write("d的数据类型是："+(typeof d)+"<br/>");
+document.write("e的数据类型是："+(typeof e)+"<br/>");
+
+//这两个函数还是非常常用的，并且和java中的这两个函数用法是一致的。
+var bb ="8";
+var bb = parseInt(bb);
+document.write("字符串转整型： "+(bb+1)+"<br/>");
+
+var cc ="8.1";
+cc = parseFloat(cc);
+document.write("字符串转浮点型："+(cc+0.1)+"<br/>")
+
+//if判断语句
+var age = 2;
+if(age > 18){
+document.write("我是成年人！！！"+"<br/>");
+}
+else{
+document.write("我不是成年人！！！"+"<br/>");
+}
+//switch分支结构
+var option = 3;
+switch(option){
+case 1:{
+document.write("today is monday"+"<br/>");
+break;
+}
+case 2:{
+document.write("today is tuesday"+"<br/>");
+break;
+}
+case 3:{
+document.write("today is wednesday!"+"<br/>");
+break;
+}
+default :{
+document.write("the input is a error"+"<br/>");
+break;
+}
+}
+//循环结构,for循环和while循环都是和java中的是完全一样的，可以很轻松的掌握
+for(var i = 1;i<5;i++){
+document.write("this is "+i+" <br/>")
+}
+var n = 6;
+while(n >= 0){
+document.write("while loop value : "+(n*3)+" <br/>");
+n--;
+}
+
+//变量运算符+-*/四个运算符号，true is 1;false is 0;
+var num1 = 10;
+var num2 = 3;
+document.write("the result is: "+(num1+num2)+" <br/>");
+document.write("the result is: "+(num1-num2)+" <br/>");
+document.write("the result is: "+(num1*num2)+" <br/>");
+document.write("the result is: "+(num1/num2)+" <br/>");
+//三目运算符,和Java中的三目运算符一样。
+document.write("5 比 3 大吗？"+(5>3?"YES":"NO")+" <br/>");
+
+
+
+</script>
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>this is a javascript</title>
+</head>
+
+<body>
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script type="text/javascript">
+        /*
+        各种注册事件！
+        */
+
+        function clickTest() {
+            //alert("onclick event");
+        }
+
+        function showTime() {
+            var timespan = document.getElementById("timespan");
+            var date = new Date().toLocaleString();
+            timespan.innerHTML = date.fontcolor("red");
+            //alert("jjj");
+        }
+
+        function hideTime() {
+            var timespan = document.getElementById("timespan");
+            timespan.innerHTML = "";
+        }
+
+        function clickTest2() {
+//alert("webstorm真是强大，工欲善其事必先利其器！漂亮！")
+            var date = new Date().toLocaleString();
+            alert(date);
+        }
+
+    </script>
+    <style type="text/css">
+        div {
+            color: pink;
+            background-color: #999999;
+            font-size: 30px;
+        }
+    </style>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>常用的事件</title>
+</head>
+
+<body>
+<div>
+    this is a div label.
+
+</div>
+<h1>我是大标题</h1>
+<p> woshi duanluop</p>
+<a href="1.jpg" target="_blank"></a>
+
+
+<input type="button" onclick="clickTest()" value="单击"/>
+<input type="button" onclick="clickTest2()" value="单击2"/>
+
+<input type="button" onclick="clickTest()" value="击打"/>
+
+<span onmousemove="showTime()" onmouseout="hideTime()">查看当前的时间 </span>
+
+<span id="timespan"></span>
+
+</body>
+</html>

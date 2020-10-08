@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="review.html">title 1</a>
+<a href="center.html">title 2</a>
+<a href="foot.html">title 3</a>
+<input type="button" onclick="writeUrl()" value="set address" >
+</body>
+
+
+
+
+
+<script type="text/javascript">
+/*一个html  document
+
+var allNodes =  document.all;
+for (var i = 0;i<allNodes.length;i++){
+for (var i = 0;i<allNodes.length;i++){
+    alert(allNodes[i].nodeName);
+
+}
+ */
+function writeUrl() {
+
+var links =  document.links;
+   // alert(links.length);
+for (var i = 0; i<links.length;i++){
+    links[i].href = "http://www.baidu.com";
+}
+}
+
+
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
