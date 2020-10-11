@@ -13,6 +13,8 @@ public class FormVO {
     private String title;
     private String password;
     private String city;
+    private String province;
+    private String area;
     private List<String> thing;
     private String sex;
     private String desc;

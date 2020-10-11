@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-1、layui 和 jquery有冲突，需要使用layui内置的jquery比较好
+1、layui 和 jquery有冲突，需要使用layui内置到的jquery比较好
 -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
@@ -14,7 +14,7 @@
     <script th:src="@{/layui/layui.js}" src="../static/layui/layui.js"></script>
     <script th:src="@{/lib/js/jquery-3.4.1.min.js}" src="../static/lib/js/jquery-3.4.1.min.js"></script>
 </head>
-<body id="body">
+
 <form class="layui-form" action="/th/accept2" method="post" enctype="application/x-www-form-urlencoded">
     <div class="layui-form-item">
         <label class="layui-form-label">输入框</label>
@@ -29,23 +29,24 @@
         </div>
         <div class="layui-form-mid layui-word-aux">辅助文字</div>
     </div>
-    <!--<div class="layui-form-item">-->
-        <!--<label class="layui-form-label">选择框</label>-->
-        <!--<div class="layui-input-block">-->
-            <!--<select name="city" lay-verify="required">-->
-                <!--<option value=""></option>-->
-                <!--<option value="0">北京</option>-->
-                <!--<option value="1">上海</option>-->
-                <!--<option value="2">广州</option>-->
-                <!--<option value="3">深圳</option>-->
-                <!--<option value="4">杭州</option>-->
-            <!--</select>-->
-        <!--</div>-->
-    <!--</div>-->
+    <div class="layui-form-item">
+        <label class="layui-form-label">选择框</label>
+        <div class="layui-input-block">
+            <select name="city" lay-verify="required">
+                <option value=""></option>
+                <option value="0">北京</option>
+                <option value="1">上海</option>
+                <option value="2">广州</option>
+                <option value="3">深圳</option>
+                <option value="4">杭州</option>
+            </select>
+        </div>
+    </div>
+
     <div class="layui-form-item">
         <label class="layui-form-label">联动选择框</label>
         <div class="layui-input-inline">
-            <select name="province" lay-filter="province" id="province">
+            <select name="quiz1" lay-filter="province">
                 <option value="">请选择省</option>
                 <option value="浙江" selected="">浙江省</option>
                 <option value="你的工号">江西省</option>
@@ -53,7 +54,7 @@
             </select>
         </div>
         <div class="layui-input-inline">
-            <select name="city" id="city" lay-filter="city">
+            <select name="quiz2" id="city">
                 <option value="">请选择市</option>
                 <option value="杭州">杭州</option>
                 <option value="宁波" disabled="">宁波</option>
@@ -63,7 +64,7 @@
             </select>
         </div>
         <div class="layui-input-inline">
-            <select name="area" id="area" >
+            <select name="quiz3">
                 <option value="">请选择县/区</option>
                 <option value="西湖区">西湖区</option>
                 <option value="余杭区">余杭区</option>
@@ -108,89 +109,21 @@
     </div>
 </form>
 
+
 <script>
-    //Demo
-    layui.use(['form','layer','element'], function () {
+    layui.use(['form','element'], function () {
         var form = layui.form;
-        var layer = layui.layer;
-        form.on('select(province)',function (data) {
-            showCity(data.value);
-            form.render();
-        });
-        form.on('select(city)',function (data) {
-            showArea(data.value);
-            form.render();
-        })
+       form.on('select(province)',function (data) {
+           alert(data);
+       })
+
+
+
     });
 
-
-    var src2 = '';
-    $.ajax({
-        url: 'http://localhost:8081/th/deploy',
-        type: 'get',
-        dataType: 'json',
-        success: function (data) {
-            $.each(data, function (index, item) {
-                src2 += '<input type="checkbox" name="thing" value="' + item.id + '" title="' + item.name + '">';
-            });
-            $('#currency2').html(src2);
-        }
-    });
-    // 省的数据
-    var province = '';
-    $.ajax({
-        url: 'http://localhost:8081/tree/province',
-        type: 'get',
-        dataType: 'json',
-        success: function (data) {
-            $.each(data, function (index, item) {
-                province += '<option value="' + item.id + '">' + item.title + '</option>';
-            });
-            $('#province').html(province);
-        }
-    });
-
-//    城市数据
-    function showCity(provinceId) {
-        // 数据
-        var city = '';
-        $.ajax({
-            url: 'http://localhost:8081/tree/city?provinceId='+provinceId+'',
-            type: 'get',
-            dataType: 'json',
-            async: false ,
-            success: function (data) {
-                // alert('原始数据'+data);
-                $.each(data, function (index, item) {
-                    city += '<option value="' + item.id + '">' + item.title + '</option>';
-                });
-                $('#city').empty();
-                $('#area').empty();
-                $('#city').html(city);
-            }
-        });
-    }
-
-    //    城市数据
-    function showArea(cityId) {
-        var area = '';
-        $.ajax({
-            url: 'http://localhost:8081/tree/area?cityId='+cityId+'',
-            type: 'get',
-            dataType: 'json',
-            async: false ,
-            success: function (data) {
-                // alert('原始数据'+data);
-                $.each(data, function (index, item) {
-                    area += '<option value="' + item.id + '">' + item.title + '</option>';
-                });
-                $('#area').empty();
-                $('#area').html(area);
-            }
-        });
-    }
 
 </script>
+
 
 </body>
 </html>

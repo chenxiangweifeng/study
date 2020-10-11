@@ -35,6 +35,7 @@ public class TestJpaController {
     }
 
     @ApiOperation(value = "根据id查询人员")
+    @CrossOrigin
     @RequestMapping(value = "/findByPersonById", method = RequestMethod.GET)
     public Person findByPersonById(@RequestParam String id) {
         return personService.findByPersonById(id);

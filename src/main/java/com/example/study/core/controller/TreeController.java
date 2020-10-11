@@ -52,4 +52,24 @@ public class TreeController {
         return treeService.getChinaProvinceCities();
     }
 
+    @ApiOperation(value = "中国所有省的数据")
+    @CrossOrigin
+    @RequestMapping(value = "/province", method = RequestMethod.GET)
+    public  List<Node>  provinceData() {
+        return treeService.getProvinceData();
+    }
+    @ApiOperation(value = "根据省获取城市")
+    @CrossOrigin
+    @RequestMapping(value = "/city", method = RequestMethod.GET)
+    public  List<Node>  cityData(@RequestParam String provinceId) {
+        return treeService.getCityData(provinceId);
+    }
+
+    @ApiOperation(value = "根据城市获取区县")
+    @CrossOrigin
+    @RequestMapping(value = "/area", method = RequestMethod.GET)
+    public  List<Node>  areaData(@RequestParam String cityId) {
+        return treeService.getAreaData(cityId);
+    }
+
 }

@@ -41,45 +41,12 @@
 
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
+
     layui.use(['tree', 'util'], function () {
         var tree = layui.tree;
         var layer = layui.layer;
         var util = layui.util;
-        var data = [{
-            title: '全国'
-            , id: 1
-            , children: [
-                {
-                    title: '浙江省'
-                    , id: 21
-                    , children: [
-                        {
-                            title: '杭州市'
-                            , id: '211'
-                        }
-                        , {
-                            title: '嘉兴市'
-                            , id: '212'
-                        }
-                    ]
-                },
-                {
-                    title: '河南省'
-                    , id: 22
-                    , children: [
-                        {
-                            title: '郑州市'
-                            , id: '221'
-                        }
-                        , {
-                            title: '驻马店市'
-                            , id: '222'
-                        }
-                    ]
-                }
-            ]
-        }
-        ];
+
         //基本演示
         tree.render({
             elem: '#test12'
@@ -92,12 +59,9 @@
                 layer.msg('状态：' + obj.state + '<br>节点数据：' + JSON.stringify(data));
             }
         });
-
         // ajax 获取树形结构数据
         function getTreeData() {
             var data = [];
-            var data1 = new Array();
-
             $.ajax({
                     url: 'http://localhost:8081/tree/chinaData',
                     type: 'get',
@@ -115,12 +79,10 @@
         // var checkedData = tree.getChecked('demoId1'); //获取选中节点的数据
         // var json = JSON.stringify(checkedData);
         // alert(json);
-
         //按钮事件
         util.event('lay-demo', {
             getChecked: function (othis) {
                 var checkedData = tree.getChecked('demoId1'); //获取选中节点的数据
-
                 layer.alert(JSON.stringify(checkedData), {shade: 0});
                 console.log(checkedData);
             }
