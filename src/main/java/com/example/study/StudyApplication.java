@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 
 /**
- * @author 沉香微风
  * springboot的引导类（启动类）
  */
 @SpringBootApplication

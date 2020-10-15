@@ -1,4 +1,4 @@
-package com.example.study.core.controller;
+package com.example.study.core.controller.test.jpa;
 import com.example.study.common.domain.LayuiResult;
 import com.example.study.common.utils.LayuiUtil;
 import com.example.study.core.model.entity.Person;

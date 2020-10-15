@@ -1,4 +1,4 @@
-package com.example.study.core.controller;
+package com.example.study.core.controller.test.kafka;
 import com.example.study.common.enums.KafkaTopicEnum;
 import com.example.study.core.model.entity.Person;
 import io.swagger.annotations.Api;
