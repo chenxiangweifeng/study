@@ -176,6 +176,8 @@ public class IndexController {
     @RequestMapping(value = "/saveform", method = RequestMethod.POST)
     public String saveform(@ModelAttribute Person inper) {
         System.out.println("整个实体对象是："+inper+"一个属性是："+inper.getUserName());
+
+
         return "ok";
     }
 

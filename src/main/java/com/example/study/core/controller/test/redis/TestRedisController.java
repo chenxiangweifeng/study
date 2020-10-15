@@ -1,4 +1,4 @@
-package com.example.study.core.controller;
+package com.example.study.core.controller.test.redis;
 import com.example.study.common.enums.RedisKeyEnum;
 import com.example.study.core.service.redis.RedisTestService;
 import io.swagger.annotations.Api;
