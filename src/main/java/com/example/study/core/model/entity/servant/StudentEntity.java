@@ -44,7 +44,7 @@ public class StudentEntity implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(locale = "zh",timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "birthday")
-    private Date birthday;
+    private Date birthday = new Date();
 
     @Column(name = "create_time")
     @Temporal(TemporalType.TIMESTAMP)

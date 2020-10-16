@@ -89,11 +89,11 @@
             <a href="javascript:;">基本信息</a>
             <dl class="layui-nav-child" >
                 <shiro:hasPermissions name="student_list">
-                    <dd class="main_left"><a  data-src="/th/fps"  target="_top" >persons列表</a></dd>
+                    <dd class="main_left"><a  data-src="/th/fps"  target="_top" >考生列表</a></dd>
                 </shiro:hasPermissions>
 
                 <shiro:hasPermission name="class_list">
-                    <dd class="main_left"><a data-src="/th/fadd" target="_top">新增person</a></dd>
+                    <dd class="main_left"><a data-src="/th/addStu" target="_top">考生添加</a></dd>
                 </shiro:hasPermission>
 
                 <shiro:hasPermission name="user_list">

@@ -5,6 +5,7 @@ import com.example.study.common.utils.LayuiUtil;
 import com.example.study.core.model.entity.Person;
 import com.example.study.core.model.vo.DeploymentVo;
 import com.example.study.core.model.vo.FormVO;
+import com.example.study.core.model.vo.servant.StudentVo;
 import com.google.common.collect.Lists;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -13,15 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.jws.WebParam;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
  * @author 沉香微风
-
+ * 都是重定向跳转使用等
  */
 
 @Controller
@@ -115,6 +114,16 @@ public class IndexController {
         model.addAttribute("p",new Person());
         return "addp";
     }
+
+
+    @ApiOperation(value = "跳转对象使用")
+    @CrossOrigin
+    @RequestMapping(value = "/addStu", method = RequestMethod.GET)
+    public String fAddStu(Model model) {
+        model.addAttribute("p",new StudentVo());
+        return "/servant/addStudent";
+    }
+
 
     @ApiOperation(value = "多个一个复合对象")
     @ResponseBody
