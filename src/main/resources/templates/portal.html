@@ -49,8 +49,8 @@
         font-size: 13px;
     }
     .main_right{
-        margin-top: 40px;
-        margin-left: 230px;
+        margin-top: 20px;
+        margin-left: 50px;
     }
     .ul1 li{
         margin-top:6px;
@@ -73,11 +73,9 @@
     </li>
     <li class="layui-nav-item">
         <a th:href="@{/index}"><img src="/images/2019-08-07/f8aa0870-e4ea-4170-9772-296204476267.jpg" class="layui-nav-img"></a>
-
     </li>
     <li class="layui-nav-item">
         <a href="quite">退出登录</a>
-
     </li>
 </ul>
 
@@ -89,7 +87,7 @@
             <a href="javascript:;">基本信息</a>
             <dl class="layui-nav-child" >
                 <shiro:hasPermissions name="student_list">
-                    <dd class="main_left"><a  data-src="/th/fps"  target="_top" >考生列表</a></dd>
+                    <dd class="main_left"><a  data-src="/ser/stulist"  target="_top" >考生列表</a></dd>
                 </shiro:hasPermissions>
 
                 <shiro:hasPermission name="class_list">
@@ -97,15 +95,9 @@
                 </shiro:hasPermission>
 
                 <shiro:hasPermission name="user_list">
-                    <dd class="main_left"><a data-src="/userlist2" target="_top">用户列表</a></dd>
-
+                    <dd class="main_left"><a data-src="/ser/stulist" target="_top">用户列表</a></dd>
                 </shiro:hasPermission>
-
-
                 <dd class="main_left"><a data-src="/userlist/1" target="_top">无授权测试</a></dd>
-
-
-
             </dl>
         </li>
         <li class="layui-nav-item">
@@ -160,7 +152,7 @@
 <!--style="width: 70%"-->
 
 <div class="main_right">
-    <iframe frameborder="0" scrolling="yes"  style="width: 70%" src="" id="aa">
+    <iframe frameborder="0" scrolling="no"  style="width: 100%" src="" id="aa">
     </iframe>
 </div>
 <div class="layui-footer">

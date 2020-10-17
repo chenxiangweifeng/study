@@ -23,7 +23,7 @@
         <commons-io.version>2.3</commons-io.version>
         <redission.version>3.11.4</redission.version>
     </properties>
-
+<!-- 有时候jar包冲突问题导致应用报错也要重视，很难发现-->
     <dependencies>
         <!--vo转实体类,实体类之间的转换使用-->
         <dependency>
@@ -103,7 +103,6 @@
             <artifactId>kafka-clients</artifactId>
             <version>2.2.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -126,10 +125,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-cache</artifactId>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -138,12 +133,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
+        <!--spring-boot-devtools工具不能开启，否则和orika冲突，报ClassCastException异常，排除该jar包即可-->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>

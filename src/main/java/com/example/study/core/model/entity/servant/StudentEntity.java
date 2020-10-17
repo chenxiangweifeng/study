@@ -2,6 +2,7 @@ package com.example.study.core.model.entity.servant;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,6 +16,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "tb_student")
+@NoArgsConstructor
 public class StudentEntity implements Serializable {
 
     @Id
@@ -44,7 +46,7 @@ public class StudentEntity implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(locale = "zh",timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "birthday")
-    private Date birthday = new Date();
+    private Date birthday;
 
     @Column(name = "create_time")
     @Temporal(TemporalType.TIMESTAMP)

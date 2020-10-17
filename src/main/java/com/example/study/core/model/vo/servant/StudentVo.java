@@ -2,6 +2,8 @@ package com.example.study.core.model.vo.servant;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,6 +17,7 @@ import java.util.Date;
  * 考生信息vo类
  */
 @Data
+@NoArgsConstructor
 public class StudentVo implements Serializable {
 
     private String id;
@@ -33,9 +36,11 @@ public class StudentVo implements Serializable {
 //  民族
     private Integer nation;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(locale = "zh",timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
-    @Column(name = "birthday")
+//    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+//    @JsonFormat(locale = "zh",timezone = "GMT+8",pattern = "yyyy-MM-dd")
     private Date birthday;
+
+
 
 }

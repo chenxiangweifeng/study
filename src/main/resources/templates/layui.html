@@ -15,6 +15,25 @@
 </head>
 
 <body>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>始终等比例水平排列</legend>
+</fieldset>
+<div class="layui-row">
+    <div class="layui-col-xs3">
+        <div class="grid-demo grid-demo-bg1">3/12</div>
+    </div>
+    <div class="layui-col-xs3">
+        <div class="grid-demo">3/12</div>
+    </div>
+    <div class="layui-col-xs3">
+        <div class="grid-demo grid-demo-bg1">3/12</div>
+    </div>
+    <div class="layui-col-xs3">
+        <div class="grid-demo">3/12</div>
+    </div>
+</div>
+
+
 <h1>h2hhhhhhhhhh</h1>
 <form class="layui-form" action="http://localhost:8081/th/accept" method="post" enctype=application/x-www-form-urlencoded>
     <div class="layui-form-item">
@@ -88,11 +107,16 @@
     <input type="text" class="layui-input" id="test1">
 </div>
 <div id="test2"></div>
-
+<i class="layui-icon layui-icon-face-smile" style="font-size: 30px; color: #1E9FFF;"></i>
 
 <script>
 
-    ayui.use('colorpicker', function(){
+    layui.use(['colorpicker','layer'] ,function(){
+        var layer = layui.layer;
+        layer.msg('有表情地提示', {icon: 71});
+
+
+
         var colorpicker = layui.colorpicker;
         //渲染
         colorpicker.render({

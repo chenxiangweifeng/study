@@ -122,7 +122,7 @@ public class MapperUtil {
      * @return 结果对象列表
      */
     public static <S, D> Page<D> mapperPageObject(Class<D> dClass, Page<S> page, Map<String, String> map) {
-        //        MapperFactory mapperFactory = SpringBeanContext.getBean(MapperFactory.class);
+//                MapperFactory mapperFactory = SpringBeanCo.getBean(MapperFactory.class);
         DefaultMapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
 
         if (page == null) {
