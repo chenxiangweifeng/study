@@ -1,0 +1,13 @@
+Redis持久化增加aof策略，至此aof以及rdb双策略运行。
+
+前提，确保redis.conf 是可写可读文件[给与这个文件最大权限！] chmod  777 redis.conf
+可以加这两个命令为Redis增加上aof的持久化策略！
+进入redis-cli 模式下再执行命令：
+config set appendonly yes
+config rewrite
+
+######备注：
+# 文件默认名字就是appendonly.aof
+config set appendfilename "appendonly.aof" 
+# 默认操作，1秒异步将内存中数据刷到磁盘
+appendfsync everysec
