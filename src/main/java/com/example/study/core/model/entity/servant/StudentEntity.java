@@ -16,7 +16,6 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "tb_student")
-@NoArgsConstructor
 public class StudentEntity implements Serializable {
 
     @Id
@@ -31,6 +30,13 @@ public class StudentEntity implements Serializable {
 
     @Column(name = "age")
     private Integer age;
+
+    @Column(name = "phone_num")
+    private String phoneNum;
+
+//    身份证号
+    @Column(name = "identity_num")
+    private String identityNum;
 
 //  申请职位，这个是联动的
     @Column(name = "apply_position")
