@@ -34,8 +34,16 @@ public class ScoreReportController {
     }
 
     @GetMapping("/rank")
+    @ApiOperation(value = "特定职位的考生排名")
     public ScoreReportVo scoreRankReport(@RequestParam String phoneNum,@RequestParam String positionCode){
         ScoreReportVo vo = scoreReportService.scoreRank(phoneNum, positionCode);
+        return vo;
+    }
+
+    @GetMapping("/rankAll")
+    @ApiOperation(value = "查询该考生总的排名信息")
+    public ScoreReportVo scoreRankAllReport(@RequestParam String phoneNum){
+        ScoreReportVo vo = scoreReportService.rankAllStudents(phoneNum);
         return vo;
     }
 

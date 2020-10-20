@@ -8,7 +8,6 @@ import com.example.study.core.repository.servant.ScoreReportRepository;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
 import java.util.List;
@@ -32,7 +31,6 @@ public class ScoreReportService {
         scoreReportRepository.save(entity);
     }
 
-
     /**
      *
      * @param phoneNum 用于唯一确认一个考生
@@ -55,18 +53,18 @@ public class ScoreReportService {
         return vo;
     }
 
-    public void rankAllStudents(String phoneNum){
-
+    public ScoreReportVo rankAllStudents(String phoneNum){
         List<ScoreReportEntity> entityList = scoreReportRepository.findByPhoneNum(phoneNum);
+        ScoreReportVo vo = new ScoreReportVo();
         if(CollectionUtils.isNotEmpty(entityList)){
             ScoreReportEntity entity = entityList.get(0);
+            vo = MapperUtil.mapperObject(ScoreReportVo.class, entity);
             double score = entity.getScore();
 //            根据分数超过这个的进行排名确定   http://help.ih5.cn/question/644.html
-
-
+            long rank = scoreReportRepository.countByScoreGreaterThan(score);
+            vo.setRank((int)rank+1);
         }
-
-
+        return vo;
     }
 
 

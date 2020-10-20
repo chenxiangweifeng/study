@@ -19,6 +19,11 @@ public interface ScoreReportRepository extends JpaRepository<ScoreReportEntity,S
 
     List<ScoreReportEntity> findByPhoneNum(String phoneNum);
 
-
+    /**
+     *
+     * @param score
+     * @return 超过该分数的人数有多少个
+     */
+    long countByScoreGreaterThan(double score);
 
 }
