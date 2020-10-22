@@ -16,6 +16,14 @@ import java.util.List;
 public interface PositionRepository extends JpaRepository<PositionEntity,String>, JpaSpecificationExecutor<PositionEntity> {
 
 
+    /**
+     *
+     * @param positionCode 根据职位代码查找职位详情
+     * @return
+     */
+    PositionEntity findByPositionCode(String positionCode);
+
+
 
 
 }

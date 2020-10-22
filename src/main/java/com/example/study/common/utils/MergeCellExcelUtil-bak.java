@@ -1,8 +1,10 @@
-//package com.example.study.common.test;
+//package com.example.study.common.utils;
 //
-//import org.apache.poi.ss.usermodel.Workbook;
-//import org.apache.poi.ss.usermodel.WorkbookFactory;
+//import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+//import org.apache.poi.ss.usermodel.*;
+//import org.apache.poi.ss.util.CellRangeAddress;
 //
+//import java.io.IOException;
 //import java.io.InputStream;
 //import java.util.ArrayList;
 //import java.util.List;
@@ -20,7 +22,6 @@
 //     * @param indexNum 至少需要多少列数据
 //     */
 //    public static List<Object[]> readExcelToObj(InputStream is, int indexNum) {
-//
 //        Workbook wb = null;
 //        List<Object[]> objArrList = null;
 //        try {
@@ -35,6 +36,32 @@
 //        return objArrList;
 //    }
 //
+//
+//
+//    /**
+//     * 读取excel数据,调用这方法开始
+//     * @param is
+//     * @param indexNum 至少需要多少列数据
+//     */
+////    public static <T> List<T> readExcelToObj(InputStream is, int indexNum,T t) {
+////
+////        Workbook wb = null;
+////        List<T> objArrList = null;
+////        try {
+////            objArrList = new ArrayList<>();
+////            wb = WorkbookFactory.create(is);
+////            readExcel(wb, 0, 0, 0,objArrList,indexNum);
+////        } catch (InvalidFormatException e) {
+////            e.printStackTrace();
+////        } catch (IOException e) {
+////            e.printStackTrace();
+////        }
+////        return objArrList;
+////    }
+//
+//
+//
+//
 //    /**
 //     * 读取excel文件
 //     * @param wb
@@ -45,7 +72,6 @@
 //    public static void readExcel(Workbook wb,int sheetIndex, int startReadLine, int tailLine, List<Object[]> objArrList, int indexNum) {
 //        Sheet sheet = wb.getSheetAt(sheetIndex);
 //        Row row = null;
-//
 //        for(int i=startReadLine; i<sheet.getLastRowNum()-tailLine+1; i++) {
 //            row = sheet.getRow(i);
 //            List<Object> objList = new ArrayList<>();
@@ -57,14 +83,13 @@
 //                    continue;
 //                }
 //                boolean isMerge = isMergedRegion(sheet, i, c.getColumnIndex());
-//　　　　　　　　　　//判断是否具有合并单元格
+////              判断是否具有合并单元格
 //                if(isMerge) {
 //                    String rs = getMergedRegionValue(sheet, row.getRowNum(), c.getColumnIndex());
 //                    objList.add(rs);
 //                }else {
 //                    objList.add(getCellValue(c));
 //                }
-//
 //            }
 //            while(objList.size()<indexNum){
 //                objList.add("");
@@ -125,6 +150,61 @@
 //        }
 //        return false;
 //    }
+//
+//
+//    /**
+//     * 获取单元格的值
+//     * @param cell
+//     * @return
+//     */
+//    public static String getCellValue(Cell cell){
+//        if(cell == null){
+//            return "";
+//        }
+//        if(cell.getCellType() == CellType.STRING){
+//            return cell.getStringCellValue();
+//        }else if(cell.getCellType() == CellType.BOOLEAN){
+//            return String.valueOf(cell.getBooleanCellValue());
+//        }else if(cell.getCellType() == CellType.FORMULA){
+//            return cell.getCellFormula() ;
+//        }else if(cell.getCellType() == CellType.NUMERIC){
+//            return String.valueOf(cell.getNumericCellValue());
+//        }
+//        return "";
+//    }
+//
+//
+//
+///**
+// * 枚举类型有问题，进行改正
+// */
+////    /**
+////     * 获取单元格的值
+////     * @param cell
+////     * @return
+////     */
+////    public static String getCellValue(Cell cell){
+////        if(cell == null) return "";
+////
+////        if(cell.getCellType() == Cell.CELL_TYPE_STRIN){
+////
+////            return cell.getStringCellValue();
+////
+////        }else if(cell.getCellType() == Cell.CELL_TYPE_BOOLEAN){
+////
+////            return String.valueOf(cell.getBooleanCellValue());
+////
+////        }else if(cell.getCellType() == Cell.CELL_TYPE_FORMULA){
+////
+////            return cell.getCellFormula() ;
+////
+////        }else if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC){
+////
+////            return String.valueOf(cell.getNumericCellValue());
+////
+////        }
+////        return "";
+////    }
 //
 //
 //

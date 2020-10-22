@@ -16,4 +16,11 @@ public class UserVo {
     @Excel(name = "性别")
     private String  sex;
 
+    @Excel(name = "地址")
+    private String address;
+
+    @Excel(name = "电话")
+    private String phoneNum;
+
+
 }

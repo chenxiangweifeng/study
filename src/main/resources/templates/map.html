@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+    高德地图的应用
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <title>首页</title>
+</head>
+
+<body>
+
+<style type="text/css">
+    #container {width:1300px; height: 800px; }
+</style>
+
+<div id="container"></div>
+
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=1546acbe51a2276f9bb0ffde98812f44"></script>
+
+<script>
+    window.onload = function(){
+        var map = new AMap.Map('container', {
+            zoom:11,//级别
+            center: [116.397428, 39.90923],//中心点坐标
+            viewMode:'3D'//使用3D视图
+        });
+    }
+</script>
+
+
+</body>
+
+</html>

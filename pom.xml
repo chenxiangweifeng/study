@@ -25,6 +25,14 @@
     </properties>
 <!-- 有时候jar包冲突问题导致应用报错也要重视，很难发现-->
     <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
+        </dependency>
+
         <!--Excel导入导出-Easypoi-->
         <!--文档参考：http://doc.wupaas.com/docs/easypoi/easypoi-1c0u6ksp2r091-->
         <dependency>
