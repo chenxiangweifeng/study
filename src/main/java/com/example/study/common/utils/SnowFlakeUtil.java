@@ -43,7 +43,6 @@ public class SnowFlakeUtil {
 
 	private long lastMilliseconds;
 
-
 	public static void setWorkerId(final long workerId) {
 		Preconditions.checkArgument(workerId >= 0L && workerId < WORKER_ID_MAX_VALUE);
 		SnowFlakeUtil.workerId = workerId;
