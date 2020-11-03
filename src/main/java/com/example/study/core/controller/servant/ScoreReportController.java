@@ -12,7 +12,7 @@ import java.util.Random;
 
 @RestController
 @RequestMapping(value = "/score")
-@Api(description = "考生分数单控制类")
+@Api(description = "考生成绩单控制类")
 public class ScoreReportController {
 
     @Autowired

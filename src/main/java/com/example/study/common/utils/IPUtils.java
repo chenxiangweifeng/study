@@ -10,9 +10,8 @@ import java.net.UnknownHostException;
  */
 public class IPUtils {
 
-
     @Test
-    public  void getIP(){
+    public void getIP(){
         String IP = null;
         try {
             InetAddress localHost = InetAddress.getLocalHost();
