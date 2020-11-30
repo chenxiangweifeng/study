@@ -87,4 +87,20 @@ public class TestRedisController {
         return "redis 获取有序集合的遍历，zset";
     }
 
+    @ApiOperation(value = "延迟队列-有序集合插入")
+    @RequestMapping(value = "/zsetAdd", method = RequestMethod.GET)
+    public String zsetAdd() {
+        redisTestService.addZsetData();
+        return "zsetAdd";
+    }
+
+    @ApiOperation(value = "延迟队列-有序结合查询并执行相应的命令")
+    @RequestMapping(value = "/listenerZset", method = RequestMethod.GET)
+    public String listenerZset() {
+        redisTestService.pollingListener();
+        return "listenerZset";
+    }
+
+
+
 }

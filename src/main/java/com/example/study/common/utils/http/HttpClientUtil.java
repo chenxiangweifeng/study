@@ -57,7 +57,6 @@ public class HttpClientUtil {
 
     /**
      * 发起httpget请求
-     *
      * @param url
      * @return
      */

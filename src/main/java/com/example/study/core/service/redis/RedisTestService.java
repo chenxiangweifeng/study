@@ -4,6 +4,7 @@ import com.example.study.common.enums.RedisKeyEnum;
 import com.google.common.collect.Lists;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.DefaultTypedTuple;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +21,7 @@ public class RedisTestService {
 
     // 存入得数据类型如要和配置的数据类型保持一致！
     @Autowired
-    private RedisTemplate<String,Object> redisTemplate;
+    private RedisTemplate redisTemplate;
 
     public void testRedisValue(){
         redisTemplate.opsForValue().set(RedisKeyEnum.MY_REDIS_VALUE.key,"中华人民共和国");
@@ -102,6 +103,58 @@ public class RedisTestService {
         System.out.println("排名前三位的大学:::");
         Set<Object> rank2 = redisTemplate.opsForZSet().reverseRange(RedisKeyEnum.MY_REDIS_ZSET.key, 0, 2);
         rank2.forEach(System.out::println);
+    }
+
+    /**
+     * 模拟插入一些需要延迟关闭订单的任务，可以用（当前时间戳+需要延迟关闭的时间）充当该值的score
+     */
+    public void addZsetData(){
+        long  nowSecond = System.currentTimeMillis() / 1000;
+        redisTemplate.opsForZSet().add("order-close","id001",nowSecond + 30);
+        redisTemplate.opsForZSet().add("order-close","id002",nowSecond + 50);
+        redisTemplate.opsForZSet().add("order-close","id003",nowSecond + 60);
+        redisTemplate.opsForZSet().add("order-close","id004",nowSecond + 80);
+        redisTemplate.opsForZSet().add("order-close","id005",nowSecond + 90);
+        redisTemplate.opsForZSet().add("order-close","id006",nowSecond + 100);
+        redisTemplate.opsForZSet().add("order-close","id007",nowSecond + 120);
+    }
+
+    /**
+     * 轮询redis 的zset 发现score过期，就可以关闭订单，并将该value从zset中移除
+     */
+    public void pollingListener(){
+        int i = 1;
+        while (true) {
+//            当前时间戳，单位 s
+            long nowStamp = System.currentTimeMillis() / 1000;
+//          以当前时间为基准， 查询前10分钟到后1分钟之后，共计11分钟
+            Set<DefaultTypedTuple<String>> orderList = redisTemplate.opsForZSet()
+                    .rangeByScoreWithScores("order-close", nowStamp - 600, nowStamp + 60);
+
+            if (orderList.size() > 0) {
+//           使用轮序查询过期任务并处理
+            for (DefaultTypedTuple<String> tuple : orderList) {
+                String value = tuple.getValue();
+                double score = tuple.getScore();
+                long nowSecond = System.currentTimeMillis() / 1000;
+                /**
+                 * 如果当前时间毫秒数大于其得分，说明该订单value已经过期，就可以关闭订单并移除相应的任务了
+                 */
+                if (nowSecond > score) {
+                    System.out.println("移除过期的订单value===" + value + "==相应的分数是：" + score);
+                    redisTemplate.opsForZSet().remove("order-close", value);
+                    System.out.println("do,do,do，关闭订单任务模拟，实际可以考虑使用异步");
+                }
+            }
+        }
+//            1s 轮询一次
+            try {
+                Thread.sleep(1000);
+//                System.out.println("执行 "+(i++)+" 次==");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public static void main(String[] args) {
