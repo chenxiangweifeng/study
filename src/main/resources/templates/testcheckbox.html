@@ -69,6 +69,12 @@
             <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
         </div>
     </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">结果</label>
+        <div class="layui-input-block" id="desc-result">
+            <!--<textarea name="desc-result" id="desc-result" placeholder="请输入内容" class="layui-textarea"></textarea>-->
+        </div>
+    </div>
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
@@ -103,17 +109,17 @@
                 url: 'http://localhost:8081/th/accept',
                 type: 'post',
                 dataType: 'json',
-                // async : false,//此处需要注意的是要想获取ajax返回的值这个async属性必须设置成同步的，否则获取不到返回值
+                async : false,//此处需要注意的是要想获取ajax返回的值这个async属性必须设置成同步的，否则获取不到返回值
                 // jsonp: 'callback',
                 // jsonpCallback: 'success_jsonpCallback',
                 contentType: "application/json",
                 data: body,
                 success: function (data2) {
                     layer.msg(data2);
-                    alert(data2);
+                    alert(JSON.parse(data2));
                     result = data2;
-                    // console.log(data2);
-                    // $('#body').html("hellooooo");
+                    console.log(data2);
+                    $('#body').html("hellooooo");
                 }
             });
             alert(result);
@@ -123,7 +129,9 @@
 
     // var src = '<option value="">请选择...</option>';
     // var src2 = '<input type="checkbox" name="thing" value="" title="请选择2">';
+    // 塞入信息
     var src2 = '';
+    var result = '';
     $.ajax({
         url: 'http://localhost:8081/th/deploy',
         type: 'get',
@@ -134,10 +142,12 @@
             $.each(data, function (index, item) {
                 // src += '<option value="' + item.id + '">' + item.name + '</option>';
                 src2 += '<input type="checkbox" name="thing" value="' + item.id + '" title="' + item.name + '">';
+                result += item.id + item.name;
             });
             // alert(src);
             // $('#currency').html(src);
             $('#currency2').html(src2);
+            $('#desc-result').html(result);
 
             // 原生js为相应的标签插入HTML元素文档
             // document.getElementById("currency2").innerHTML = src2;

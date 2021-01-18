@@ -10,6 +10,9 @@ import java.util.List;
  */
 @Data
 public class FormVO {
+    private String sname;
+    private String gender;
+
     private String title;
     private String password;
     private String city;

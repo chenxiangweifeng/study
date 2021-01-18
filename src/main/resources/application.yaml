@@ -5,14 +5,15 @@ spring:
     name: study
   ##  spring redis config
   redis:
-    host: 192.168.28.200
+    host: 10.23.3.23
     port: 6379
+  #    启动缓存
   ## database config
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://192.168.28.200:5432/postgres
+    url: jdbc:postgresql://10.23.3.23:5433/postgres
     username: postgres
-    password: admin
+    password: 18021013296
   jpa:
     properties:
       hibernate:
@@ -24,9 +25,9 @@ spring:
     show-sql: true
   ##### kafka config
   kafka:
-    bootstrap-servers:  192.168.28.200:9092
+    bootstrap-servers:  10.23.3.23:9092
     consumer:
-      group-id: group_homework
+      group-id: group_study
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
@@ -38,9 +39,8 @@ spring:
   #### elasticsearch config  #######
   data:
     elasticsearch:
-      cluster-name:  docker-cluster
-      cluster-nodes: 192.168.28.200:9300
+      cluster-name:  elasticsearch-cluster
+      cluster-nodes: 10.23.3.23:9300
   elasticsearch:
     rest:
-      uris: 192.168.28.200:9200
-
+      uris: 10.23.3.23:9200

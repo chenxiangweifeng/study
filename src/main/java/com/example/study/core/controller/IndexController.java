@@ -65,10 +65,29 @@ public class IndexController {
         return "success啦啦啦";
     }
 
+
+    @ApiOperation(value = "wechat")
+    @RequestMapping(value = "/wechat",
+            method = RequestMethod.GET)
+    @ResponseBody
+    @CrossOrigin
+    public String wechat(@RequestParam String keyword) {
+        System.out.println("接受到的参数是："+keyword);
+        return "success啦啦啦wechatwechatwechat"+keyword;
+    }
+
+
+
     @ApiOperation(value = "跳转进入portal页面")
     @RequestMapping(value = "/portal", method = RequestMethod.GET)
     public String portal() {
         return "portal";
+    }
+
+    @ApiOperation(value = "跳转进入wechat页面")
+    @RequestMapping(value = "/wx", method = RequestMethod.GET)
+    public String ex() {
+        return "wechat";
     }
 
     @ApiOperation(value = "index页面")

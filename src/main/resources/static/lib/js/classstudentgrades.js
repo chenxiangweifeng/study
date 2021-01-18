@@ -71,10 +71,7 @@ layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'elemen
             ,{field: 'music', title: '音乐', width:'8%', sort: true}
             ,{field: 'arts', title: '美术', width: '8%', sort: true}
             ,{field: 'sports', title: '体育', width:'8%', sort: true}
-
-
             // ,{fixed: 'right', width: '16%', align:'center', toolbar: '#barDemo'}
-
 
         ] ]
     });

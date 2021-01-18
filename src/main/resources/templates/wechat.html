@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+1、layui 和 jquery有冲突，让layui使用内置的jquery,即可解决冲突
+-->
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>树形展示</title>
+    <script th:src="@{/lib/js/jquery-3.4.1.min.js}" src="../../static/lib/js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+<form>
+    <div align="center">
+    <h3>生活查询</h3>
+    查询项：<input type="text" id="keyword" name="keyword"><br/>
+
+    <!--性别：-->
+    <!--<label>男:<input type="radio" name="gender" checked="checked" value="男"/></label>-->
+    <!--<label>女:<input type="radio" name="gender" value="女"/></label>-->
+    <input type="button" value="查询"  id="btn"/>
+</div>
+    <div align="center" id="result">
+    </div>
+</form>
+
+<script>
+    $("#btn").click(function () {
+        var keyword = $('#keyword').val();
+        $.ajax({
+            async: false,
+            // url: "http://localhost:8081/th/wechat?keyword="+keyword+"",
+            url: "http://localhost:8081/th/wechat?keyword="+keyword+"",
+            type: "get",
+            success: function (data) {
+                alert(data.toString());
+                    alert("新增成功");
+                    $('#result').html(data.toString());
+                    // window.location.reload();
+                }
+
+        })
+    })
+
+    // https://wx.jdcloud.com/gwtest/init/11871
+//
+//
+//
+
+
+</script>
+
+
+
+
+</body>
+</html>
+
+
+</body>
+</html>

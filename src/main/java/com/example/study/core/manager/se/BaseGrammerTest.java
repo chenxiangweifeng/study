@@ -9,7 +9,6 @@ import org.junit.Test;
  */
 public class BaseGrammerTest {
 
-
     @Test
     public void testSwitch() {
         int code = 3;
